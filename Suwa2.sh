@@ -14,7 +14,7 @@ dpkg -i Suwayomi-Server-v1.1.1-r1535-debian-all.deb
 apt --fix-broken install -y
 
 # Create a systemd service for Suwayomi Server
-cat > /etc/systemd/system/suwayomi-server.service
+cat << EOF > /etc/systemd/system/suwayomi-server.service
 [Unit]
 Description=Suwayomi Server
 After=network.target
@@ -28,7 +28,7 @@ Restart=on-failure
 
 [Install]
 WantedBy=multi-user.target
-
+EOF
 
 # Reload systemd to apply the new service
 systemctl daemon-reload
